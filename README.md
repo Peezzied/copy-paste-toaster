@@ -1,4 +1,4 @@
-# CopyToast 🍞
+# CopyToast
 
 A lightweight, standalone Windows background listener that displays an **Android-style pill toast notification** at the bottom center of the screen whenever text is copied or pasted.
 
@@ -6,23 +6,23 @@ Built in pure C# with native WPF (.NET Framework) — zero external runtime depe
 
 ---
 
-## ✨ Features
+## Features
 
-- **📱 Android-Style Pill Toast**: Floating dark rounded capsule (`#E81E1E1E`, 20px radius, drop shadow) with smooth fade-in/fade-out animations.
-- **📋 Copy & Paste Detection**:
+- **Android-Style Pill Toast**: Floating dark rounded capsule (`#E81E1E1E`, 20px radius, drop shadow) with smooth fade-in/fade-out animations.
+- **Copy & Paste Detection**:
   - **Copy / Cut**: Detects clipboard updates and displays `[Copied] <snippet>`.
   - **Paste**: Monitors <kbd>Ctrl</kbd>+<kbd>V</kbd> and <kbd>Shift</kbd>+<kbd>Insert</kbd> and displays `[Pasted] <snippet>`.
-- **🛡️ Focus Safe**: Uses `WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW` so it **never steals focus** from your typing, active games, or applications.
-- **🚀 All-In-One Executable**: `CopyToast.exe` serves as the GUI Control Panel, background daemon, installer, and uninstaller.
-- **⚡ Ultra-Lightweight**: Single 20 KB binary with 0 external dependencies.
+- **Focus Safe**: Uses `WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW` so it **never steals focus** from your typing, active games, or applications.
+- **All-In-One Executable**: `CopyToast.exe` serves as the GUI Control Panel, background daemon, installer, and uninstaller.
+- **Ultra-Lightweight**: Single 20 KB binary with 0 external dependencies.
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 1. Control Panel GUI
 Simply double-click **`CopyToast.exe`** to open the Control Panel:
-- View live status (**● Running** / **● Stopped**, **● Enabled** / **● Disabled** in Windows Startup).
+- View live status (**Running** / **Stopped**, **Enabled** / **Disabled** in Windows Startup).
 - Toggle the listener on/off with one click.
 - Install to or Uninstall from Windows Startup with one click.
 - Test toast animations with the **Show Test Toast** button.
@@ -40,7 +40,7 @@ You can also control `CopyToast.exe` via terminal or scripts:
 
 ---
 
-## 🛠️ Building from Source
+## Building from Source
 
 To compile `CopyToast.exe` using Windows' built-in C# compiler (`csc.exe`):
 
@@ -52,7 +52,7 @@ No Visual Studio, SDK, or extra package installation is required.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 copy-paste-toaster/
@@ -65,6 +65,6 @@ copy-paste-toaster/
 
 ---
 
-## 📄 License
+## License
 
 MIT License.
