@@ -1,6 +1,6 @@
 @echo off
 setlocal
-cd /d "%~dp0"
+pushd "%~dp0"
 
 set "FRAMEWORK_DIR=C:\Windows\Microsoft.NET\Framework64\v4.0.30319"
 if not exist "%FRAMEWORK_DIR%\csc.exe" (
@@ -9,11 +9,12 @@ if not exist "%FRAMEWORK_DIR%\csc.exe" (
 
 if not exist "%FRAMEWORK_DIR%\csc.exe" (
     echo Error: C# compiler csc.exe was not found.
+    popd
     exit /b 1
 )
 
 echo Compiling CopyToast.exe...
-"%FRAMEWORK_DIR%\csc.exe" /nologo /target:winexe /optimize+ /platform:anycpu /out:CopyToast.exe /lib:"%FRAMEWORK_DIR%\WPF","%FRAMEWORK_DIR%" /r:PresentationFramework.dll /r:PresentationCore.dll /r:WindowsBase.dll /r:System.Xaml.dll /r:System.dll /r:System.Core.dll src\CopyToast.cs
+"%FRAMEWORK_DIR%\csc.exe" /nologo /target:winexe /optimize+ /platform:anycpu /out:"%~dp0CopyToast.exe" /lib:"%FRAMEWORK_DIR%\WPF","%FRAMEWORK_DIR%" /r:PresentationFramework.dll /r:PresentationCore.dll /r:WindowsBase.dll /r:System.Xaml.dll /r:System.dll /r:System.Core.dll "%~dp0src\CopyToast.cs"
 
 if %ERRORLEVEL% equ 0 (
     echo.
@@ -24,3 +25,4 @@ if %ERRORLEVEL% equ 0 (
     echo.
     echo Build failed with error code %ERRORLEVEL%.
 )
+popd

@@ -1,20 +1,27 @@
 # CopyToast
 
-A lightweight, standalone Windows background listener that displays an **Android-style pill toast notification** at the bottom center of the screen whenever text is copied or pasted.
+A lightweight, standalone Windows background listener that displays an **Android-style pill toast notification** at the bottom center of the screen whenever anything is copied or pasted.
 
-Built in pure C# with native WPF (.NET Framework) — zero external runtime dependencies, 0 CPU when idle, ~20 KB executable.
+Built in pure C# with native WPF (.NET Framework) — zero external runtime dependencies, 0% CPU when idle, ~24 KB executable.
 
 ---
 
 ## Features
 
 - **Android-Style Pill Toast**: Floating dark rounded capsule (`#E81E1E1E`, 20px radius, drop shadow) with smooth fade-in/fade-out animations.
-- **Copy & Paste Detection**:
-  - **Copy / Cut**: Detects clipboard updates and displays `[Copied] <snippet>`.
-  - **Paste**: Monitors <kbd>Ctrl</kbd>+<kbd>V</kbd> and <kbd>Shift</kbd>+<kbd>Insert</kbd> and displays `[Pasted] <snippet>`.
+- **Universal Copy Interception**:
+  - Uses native Windows OS clipboard push notifications (`AddClipboardFormatListener` / `WM_CLIPBOARDUPDATE`).
+  - **Text & Code**: `[Copied] 📝 <snippet>` or `[Copied] 💻 <code snippet>`.
+  - **URLs**: `[Copied] 🔗 https://...`.
+  - **Files & Folders**: `[Copied] 📁 3 files (report.pdf, photo.png, +1 more)`.
+  - **Images & Screenshots**: `[Copied] 🖼️ Image (1920 × 1080)` (Snipping Tool `Win+Shift+S`, PrtScn, paint, browser copy).
+  - **Audio & Media**: `[Copied] 🎵 Audio Stream`.
+- **System-Wide Paste Interception**:
+  - Global low-level hook (`WH_KEYBOARD_LL`) capturing <kbd>Ctrl</kbd>+<kbd>V</kbd>, <kbd>Shift</kbd>+<kbd>Insert</kbd>, <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd> (terminals/plain text paste), and <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>V</kbd>.
+  - Context menu paste event hooks (`SetWinEventHook`).
 - **Focus Safe**: Uses `WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW` so it **never steals focus** from your typing, active games, or applications.
 - **All-In-One Executable**: `CopyToast.exe` serves as the GUI Control Panel, background daemon, installer, and uninstaller.
-- **Ultra-Lightweight**: Single 20 KB binary with 0 external dependencies.
+- **Ultra-Lightweight**: Single self-contained binary with 0 external dependencies.
 
 ---
 
@@ -56,7 +63,7 @@ No Visual Studio, SDK, or extra package installation is required.
 
 ```
 copy-paste-toaster/
-├── CopyToast.exe       # Precompiled all-in-one binary (~20 KB)
+├── CopyToast.exe       # Precompiled all-in-one binary (~24 KB)
 ├── build-exe.bat       # One-click compiler script
 ├── README.md           # Documentation
 └── src/
