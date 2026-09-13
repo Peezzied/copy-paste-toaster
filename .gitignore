@@ -1,0 +1,6 @@
+# Build artifacts
+*.obj
+*.pdb
+.vs/
+bin/
+obj/
